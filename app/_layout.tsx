@@ -2,6 +2,7 @@ import '../global.css'
 
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 import { useEffect, useState } from 'react'
 import { ActivityIndicator } from 'react-native'
 
@@ -39,8 +40,17 @@ export default function RootLayout() {
                     className="flex-1 items-center"
                 />
             ) : (
-                <Stack />
+                <Stack
+                    screenOptions={{
+                        headerShown: false,
+                    }}
+                >
+                    <Stack.Screen name="auth" />
+                    <Stack.Screen name="(tabs)" />
+                </Stack>
             )}
+
+            <StatusBar style="auto" />
         </AuthProvider>
     )
 }
