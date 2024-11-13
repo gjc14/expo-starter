@@ -1,3 +1,9 @@
+# Supabase Types
+
+1. Make sure `SUPABASE_ACCESS_TOKEN` in `.env.local` is added
+2. Run `npm run db:typegen` to generate database type from
+   `EXPO_PUBLIC_SUPABASE_URL` configed in `.env`
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with
