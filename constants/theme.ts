@@ -1,0 +1,16 @@
+export const colors = {
+    primary: '#7d5ba6',
+    primaryForeground: '#eeeeff',
+    secondary: '#f8f8f8',
+    secondaryForeground: '#33a1fd',
+    muted: '#c0c0c0',
+    mutedForeground: '#405066',
+    accent: '#f5f5f5',
+    accentForeground: '#0f172a',
+    destructive: '#dc260a',
+    destructiveForeground: '#eaeaea',
+    border: '#d7d7d7',
+    input: '#eaeaea',
+    ring: '#2563eb',
+    radius: '1rem',
+} as const
