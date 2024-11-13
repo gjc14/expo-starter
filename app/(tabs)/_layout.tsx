@@ -9,7 +9,7 @@ const TabsLayout = () => {
     const { session } = useAuthSession()
 
     if (!session || !session.user) {
-        // return <Redirect href={'/auth'} />
+        return <Redirect href={'/auth'} />
     }
 
     return (

@@ -3,19 +3,13 @@ import BottomSheet, {
     BottomSheetTextInput,
     BottomSheetView,
 } from '@gorhom/bottom-sheet'
-import { Redirect, router } from 'expo-router'
+import { Redirect } from 'expo-router'
 import { useRef, useState } from 'react'
-import {
-    Keyboard,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    View,
-} from 'react-native'
+import { Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { toast } from 'sonner-native'
 
-import { Auth } from '@/components/auth/Auth'
+import { Auth, sendMagicLink } from '@/components/auth/Auth'
 import { ThreeScaleDotLoader } from '@/components/loaders/ThreeScaleDotLoader'
 import { LogoSvg } from '@/components/Logo'
 import { Button } from '@/components/ui/button'
@@ -42,18 +36,6 @@ export default function AuthScreen() {
                     <Text className="text-2xl text-primary-foreground font-bold">
                         Expo Supabase Starter
                     </Text>
-
-                    <TouchableOpacity
-                        className="bg-secondary px-4 py-2 m-3 rounded-lg flex-row items-center justify-center gap-3"
-                        onPress={() => {
-                            router.replace('/(tabs)')
-                        }}
-                    >
-                        <Text className="text-secondary-foreground">
-                            Go Home
-                        </Text>
-                        <ThreeScaleDotLoader size="sm" />
-                    </TouchableOpacity>
                 </View>
 
                 <Auth
@@ -101,14 +83,14 @@ export default function AuthScreen() {
                                 onPress={async () => {
                                     try {
                                         setLoading(true)
-                                        // await sendMagicLink(email);
+                                        await sendMagicLink(email)
                                         toast.success(
                                             'Magic Link is sent. Please check your email.',
                                         )
                                         setLoading(false)
 
                                         // Only allow sending magic link once every 60 seconds.
-                                        setCountDown(5)
+                                        setCountDown(60)
                                         const interval = setInterval(() => {
                                             setCountDown(prev => {
                                                 if (prev === 1)
