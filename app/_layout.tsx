@@ -5,6 +5,8 @@ import { SplashScreen, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect, useState } from 'react'
 import { ActivityIndicator } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { Toaster } from 'sonner-native'
 
 import { AuthProvider, useAuthSession } from '@/context/AuthContext'
 
@@ -31,27 +33,30 @@ export default function RootLayout() {
     }
 
     return (
-        <AuthProvider>
-            <SessionLoadedCheck onLoaded={() => setSessionLoaded(true)} />
+        <GestureHandlerRootView>
+            <AuthProvider>
+                <SessionLoadedCheck onLoaded={() => setSessionLoaded(true)} />
 
-            {!sessionLoaded ? (
-                <ActivityIndicator
-                    size="large"
-                    className="flex-1 items-center"
-                />
-            ) : (
-                <Stack
-                    screenOptions={{
-                        headerShown: false,
-                    }}
-                >
-                    <Stack.Screen name="auth" />
-                    <Stack.Screen name="(tabs)" />
-                </Stack>
-            )}
+                {!sessionLoaded ? (
+                    <ActivityIndicator
+                        size="large"
+                        className="flex-1 items-center"
+                    />
+                ) : (
+                    <Stack
+                        screenOptions={{
+                            headerShown: false,
+                        }}
+                    >
+                        <Stack.Screen name="auth" />
+                        <Stack.Screen name="(tabs)" />
+                    </Stack>
+                )}
 
-            <StatusBar style="auto" />
-        </AuthProvider>
+                <StatusBar style="auto" />
+                <Toaster />
+            </AuthProvider>
+        </GestureHandlerRootView>
     )
 }
 
