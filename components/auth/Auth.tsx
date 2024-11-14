@@ -17,6 +17,7 @@ import { View } from 'react-native'
 
 import { Button } from '@/components/ui/button'
 import { supabase } from '@/lib/supabase'
+import { AppleAuth } from './AppleAuth.native'
 
 WebBrowser.maybeCompleteAuthSession() // required for web only
 const redirectTo = makeRedirectUri() + 'auth' // redirect to auth route contains Auth component
@@ -87,6 +88,14 @@ export function Auth({ onMagicLinkPress }: { onMagicLinkPress: () => void }) {
 
     return (
         <View className="gap-2 mb-5">
+            <AppleAuth
+                buttonType={'CONTINUE'}
+                buttonStyle={'WHITE'}
+                style={{
+                    height: 42,
+                }}
+                cornerRadius={12}
+            />
             <Button onPress={() => performOAuth('google')}>
                 Sign in with Google
             </Button>
