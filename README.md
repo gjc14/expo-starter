@@ -1,3 +1,39 @@
+# EAS
+
+> [!IMPORTANT] If you'd like to build ios on simulator, use
+> `--profile development-simulator` instead. Or you'll need a developer account
+> to build for ios device
+
+## Build
+
+-   [› Your computer requires some additional setup before you can build onto physical iOS devices.](https://github.com/expo/fyi/blob/main/setup-xcode-signing.md)
+-   [Expo Go vs Development Builds: Which should you use?](https://www.youtube.com/watch?v=FdjczjkwQKE&t=1250s)
+-   [How to make a development build with EAS Build](https://www.youtube.com/watch?v=LUFHXsBcW6w)
+
+1. Build with EAS (Takes about 10-15 minutes)
+2. Follow cli and download the app to your simulator or vm
+3. From now on you could `npm start` and press `s` to toggle Expo Go and
+   development build
+
+To build for devices.
+
+```sh
+eas build --profile development -p android
+eas build --profile development -p ios
+```
+
+To build for simulator for ios.
+
+```sh
+eas build --profile development-simulator -p ios
+```
+
+## Submit
+
+-   [Async Office Hours: How to quickly publish to the App Store & Play Store with EAS Submit](https://www.youtube.com/watch?v=-KZjr576tuE)
+
+---
+
 # Supabase
 
 ## Types
@@ -19,6 +55,8 @@
 3. ### Add redirect url to Supabase:
     In Authentication > URL Configuration section, fill in site url as web url
     (`localhost:8081`), redirect url as deep linking (`myapp://`, `myapp://**`).
+
+---
 
 # Welcome to your Expo app 👋
 
